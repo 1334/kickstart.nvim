@@ -712,6 +712,19 @@ require('lazy').setup({
         },
       }
 
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = { '*.ts', '*.tsx', '*.js', '*.jsx' },
+        group = vim.api.nvim_create_augroup('EslintFixOnSave', { clear = true }),
+        callback = function(args)
+          -- Check if ESLint is attached to the buffer
+          local clients = vim.lsp.get_clients { name = 'eslint', bufnr = args.buf }
+          if #clients > 0 then
+            -- Run ESLintFixAll before saving
+            vim.cmd 'EslintFixAll'
+          end
+        end,
+      })
+
       -- Ensure the servers and tools above are installed
       --
       -- To check the current status of installed tools and/or manually install
