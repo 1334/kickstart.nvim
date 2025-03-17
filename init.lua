@@ -415,6 +415,16 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        pickers = {
+          live_grep = {
+            -- Custom for live_grep (most likely what you want to modify)
+            on_input_filter_cb = function(prompt)
+              -- Replace spaces with '.*' wildcard pattern
+              local modified_prompt = prompt:gsub('%s+', '.*')
+              return { prompt = modified_prompt }
+            end,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
