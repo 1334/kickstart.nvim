@@ -475,6 +475,13 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- edit vim files
+      vim.keymap.set('n', '<leader>en', function()
+        builtin.find_files {
+          cwd = vim.fn.stdpath 'config',
+        }
+      end, { desc = 'Edit Neovim config Files' })
     end,
   },
 
