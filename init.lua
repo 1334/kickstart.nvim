@@ -419,8 +419,12 @@ require('lazy').setup({
           live_grep = {
             -- Custom for live_grep (most likely what you want to modify)
             on_input_filter_cb = function(prompt)
-              -- Replace spaces with '.*' wildcard pattern
-              local modified_prompt = prompt:gsub('%s+', '.*')
+              local temp_placeholder = '@@ESCAPED_SPACE@@'
+              local with_placeholders = prompt:gsub('\\%s', temp_placeholder)
+
+              local with_wildcards = with_placeholders:gsub('%s+', '.*')
+
+              local modified_prompt = with_wildcards:gsub(temp_placeholder, ' ')
               return { prompt = modified_prompt }
             end,
           },
