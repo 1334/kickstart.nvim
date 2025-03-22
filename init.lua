@@ -450,6 +450,23 @@ require('lazy').setup({
         local word = vim.fn.expand '<cword>'
         require('telescope.builtin').grep_string { default_text = word }
       end, { desc = '[S]earch current [W]ord' })
+      vim.keymap.set('v', '<leader>*', function()
+        -- Save the current register contents
+        local saved_reg = vim.fn.getreg '"'
+        local saved_reg_type = vim.fn.getregtype '"'
+
+        -- Yank the selected text to the unnamed register
+        vim.cmd 'normal! y'
+
+        -- Get the content of the unnamed register
+        local selected_text = vim.fn.getreg '"'
+
+        -- Restore the register
+        vim.fn.setreg('"', saved_reg, saved_reg_type)
+
+        -- Open telescope with the selected text
+        require('telescope.builtin').live_grep { default_text = selected_text, use_regex = false }
+      end, { desc = '[S]earch [V]isual selection' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
