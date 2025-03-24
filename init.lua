@@ -721,7 +721,9 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
+        ts_ls = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'typescript.tsx', 'javascript.jsx' },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
