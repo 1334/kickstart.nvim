@@ -734,6 +734,9 @@ require('lazy').setup({
         ts_ls = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'typescript.tsx', 'javascript.jsx' },
         },
+        eslint = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'typescript.tsx', 'javascript.jsx' },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
