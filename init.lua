@@ -451,7 +451,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', function()
+      vim.keymap.set('n', '<leader>*', function()
         local word = vim.fn.expand '<cword>'
         require('telescope.builtin').grep_string { default_text = word }
       end, { desc = '[S]earch current [W]ord' })
