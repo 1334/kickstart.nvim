@@ -8,5 +8,6 @@ return {
   config = true,
   keys = {
     { '<leader>gg', ':Neogit<CR>', desc = 'Neogit' },
+    { '<leader>gL', ':NeogitLogCurrent<CR>', desc = 'Current file Git log' },
   },
 }
