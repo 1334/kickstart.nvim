@@ -451,7 +451,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+      vim.keymap.set('n', '<leader>sT', builtin.builtin, { desc = '[S]earch Select [T]elescope' })
       vim.keymap.set('n', '<leader>*', function()
         local word = vim.fn.expand '<cword>'
         require('telescope.builtin').grep_string { default_text = word }
@@ -473,7 +473,7 @@ require('lazy').setup({
         -- Open telescope with the selected text
         require('telescope.builtin').live_grep { default_text = selected_text, use_regex = false }
       end, { desc = '[S]earch [V]isual selection' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', function()
         require('telescope.builtin').diagnostics { severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN } }
       end, { desc = '[S]earch All [D]iagnostics (errors and warnings only)' })
@@ -483,7 +483,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>bb', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>/', function()
+      vim.keymap.set('n', '<leader>ss', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
