@@ -162,6 +162,11 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- Allow loading local configuration files
+vim.o.exrc = true
+-- For security, you might want to set secure mode too
+vim.o.secure = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
