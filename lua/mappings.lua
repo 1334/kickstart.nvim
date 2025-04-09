@@ -26,3 +26,14 @@ vim.keymap.set('n', '<leader>fY', function()
   vim.fn.setreg('+', rel_path)
   vim.notify('Copied to clipboard: ' .. rel_path)
 end, { desc = 'Copy relative file path' })
+
+local esc = vim.api.nvim_replace_termcodes('<Esc>', true, true, true)
+vim.api.nvim_create_augroup('JSLogMacro', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  group = 'JSLogMacro',
+  pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+  callback = function()
+    -- stylua: ignore
+    vim.fn.setreg('l', "y}iconsole.log('" .. esc .. "pa:', " .. esc .. "pa)" .. esc .. "o")
+  end,
+})
