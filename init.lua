@@ -772,8 +772,12 @@ require('lazy').setup({
           -- Check if ESLint is attached to the buffer
           local clients = vim.lsp.get_clients { name = 'eslint', bufnr = args.buf }
           if #clients > 0 then
-            -- Run ESLintFixAll before saving
-            vim.cmd 'EslintFixAll'
+            -- Use the LSP formatting method instead of EslintFixAll command
+            vim.lsp.buf.format {
+              name = 'eslint',
+              timeout_ms = 2000,
+              bufnr = args.buf,
+            }
           end
         end,
       })
