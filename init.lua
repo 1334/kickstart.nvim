@@ -751,6 +751,10 @@ require('lazy').setup({
         eslint = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'typescript.tsx', 'javascript.jsx' },
         },
+        terraformls = {},
+        tailwindcss = {
+          filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
